@@ -28,7 +28,7 @@ jobs:
       run: |
         # dunno if useful, but why not to erase it?
         export HISTFILE=
-        echo "${DOCKER_ACCESS_TOKEN}" | docker login -u v3l0c1r4pt0r --password-stdin
+        echo "${DOCKER_ACCESS_TOKEN}" | docker login -u ccfactory --password-stdin
         docker tag buildsystem ccfactory/buildsystem:${{ steps.extract_ref.outputs.ref }}
         docker push ccfactory/buildsystem:${{ steps.extract_ref.outputs.ref }}
         docker logout
