@@ -24,7 +24,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag buildsystem
+      env:
+        DOCKER_ACCESS_TOKEN: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+      run: |
+        export HISTFILE=
+        echo "${DOCKER_ACCESS_TOKEN}" | docker login -u ccfactory --password-stdin
+        docker build . --file Dockerfile --tag ${{ github.repository }}
+        docker logout
     - name: Extract tag name
       env:
         REF_PATH: ${{ github.ref }}
@@ -38,6 +44,6 @@ jobs:
         # dunno if useful, but why not to erase it?
         export HISTFILE=
         echo "${DOCKER_ACCESS_TOKEN}" | docker login -u ccfactory --password-stdin
-        docker tag buildsystem ccfactory/buildsystem:${{ steps.extract_ref.outputs.ref }}
-        docker push ccfactory/buildsystem:${{ steps.extract_ref.outputs.ref }}
+        docker tag ${{ github.repository }} ccfactory/${{ github.repository }}:${{ steps.extract_ref.outputs.ref }}
+        docker push ccfactory/${{ github.repository }}:${{ steps.extract_ref.outputs.ref }}
         docker logout
