@@ -1,4 +1,4 @@
-FROM debian/eol:sarge
+FROM debian/eol:wheezy
 
 # refresh package repo
 RUN apt-get update -y
