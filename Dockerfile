@@ -12,6 +12,6 @@ RUN apt-get install -y \
   # extract .bz2 archives \
   bzip2 \
   # build tools \
-  make gawk texinfo file m4 patch flex \
+  make gawk texinfo file m4 patch flex bison \
   # menuconfigs \
   libncurses5-dev
