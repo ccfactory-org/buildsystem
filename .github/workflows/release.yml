@@ -17,9 +17,9 @@ jobs:
       matrix:
         label: [ubuntu-latest]
         experimental: [false]
-        include:
-          - label: ARM
-            experimental: true
+#        include:
+#          - label: ARM
+#            experimental: true
 
     steps:
     - uses: actions/checkout@v2
