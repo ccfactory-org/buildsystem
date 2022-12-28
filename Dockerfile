@@ -14,4 +14,6 @@ RUN apt-get install -y \
   # build tools \
   make gawk texinfo file m4 patch flex bison \
   # menuconfigs \
-  libncurses5-dev
+  libncurses5-dev \
+  # kernel deps \
+  rsync
