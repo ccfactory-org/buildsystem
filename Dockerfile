@@ -15,6 +15,8 @@ RUN apt-get install -y \
   xz-utils \
   # build tools \
   make gawk texinfo file m4 patch flex bison \
+  # building glibc requires python \
+  python python3 \
   # menuconfigs \
   libncurses5-dev \
   # kernel deps \
